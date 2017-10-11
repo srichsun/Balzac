@@ -17,9 +17,12 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: wuchanghsun
+  password: <%= ENV['BALZAC_DATABASE_PASSWORD'] %>
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
 
 development:
   <<: *default
@@ -81,5 +84,3 @@ test:
 production:
   <<: *default
   database: balzac_production
-  username: balzac
-  password: <%= ENV['BALZAC_DATABASE_PASSWORD'] %>
